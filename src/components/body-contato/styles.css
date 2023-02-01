@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form {
+    background-image: url('../../assets/banner.jpeg');
+    background-position: 50% 5%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 570px;
+    width: 760px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.contact-form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 410px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.form-input-contact {
+    margin: 15px;
+    background-color: #fff;
+    width: 280px;
+    height: 23px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.text-contact {
+    margin: 10px;
+    background-color: #fff;
+    width: 280px;
+    height: 145px;
+    border-radius: 10px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 16px;
+    max-width: 280px;
+    max-height: 145px;
+    min-width: 280px;
+    min-height: 145px;
+}
+
+.select {
+    display: block;
+    margin: 20px 0px 40px;
+    background-color: #fff;
+    width: 285px;
+    height: 26px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.contact-button {
+    width: 100px;
+    height: 30px;
+    background-color: #d21617;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .8s;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    margin-top: 25px;
+}
+
+.contact-button:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.imagem {
+    margin-top: 0px;
+    width: 100%;
+    height: 440px;
+    border: 1px solid black;
+}
+
+.contact-card-body {
+    width: 760px;
+    height: 55px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.contact-card {
+    width: 40px;
+    height: 40px;
+    margin-top: 4px;
+}
+
+.youtube {
+    width: 50px;
+}
+
+@media (max-width:768px){
+    .contact-container {
+        height: 620px;
+        width: 100%;
+    }
+    
+    .contact-form {
+        height: 570px;
+        width: 500px;
+        font-family: 'Kdam Thmor Pro', sans-serif;
+    }
+
+    .contact-button {
+        margin-top: 18px;
+    }
+
+    .contact-card-body {
+        width: 100%;
+        border-radius: 0px;
+    }
+}

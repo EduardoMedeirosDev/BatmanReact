@@ -1,0 +1,333 @@
+Framework -> Ferramenta de Trabalho
+Frame work de SPA -> React -> Framework de JavaScript
+O React é baseado por componentização
+
+-> Webpack & Babel -- Agrupar o código
+-Auxilia na separação do código em diversos arquivos.
+-Também trabalha em conjunto com o NPM na importação dos pacotes externos.
+ Babel:
+-Transformar o código js novo em código antigo.
+-Transformar o JSX em funções React.
+
+
+-> Node -> Rodar o JS na nossa máquina.
+
+-> JS Por padrão roda apenas no navegador.
+
+Engine -> Responsável por entender e rodar o JS.
+
+-> V8
+
+-> NPM (Node package manager) -> Instalar e Manipular pacotes externos no PC.
+-> Códigos externos que já entregam uma funcionalidade.
+
+-> NPX -> create-react-app -> Manipular pacotes externos sem a necessidade de instalar.
+
+package-lock.json --> Relatar a versão de cada pacote instalado no nosso projeto.
+
+package.json --> Diversas funcionalidades, mas as principais são: relatar os pacotes que temos instalados na nossa aplicação.
+Responsável pelo armazenamento do react-scripts.
+
+
+JSX -> É idêntico ao html. (Com excessão do class, vira className)
+
+É usado para facilitar a escrita do código, para não ter que aprender um novo do 0.
+
+<React.Fragment> === <> </>
+Só é possível ter uma <div> no return, porém ao usar o react.fragment isso é solucionado.
+
+
+PROPS
+Ativar propriedades no JSX
+
+function Button(props){
+    return (
+        <><div className='containerButton'>
+            <button className={props.active ? 'button' : 'disabledButton'}>{props.name}</button>
+            <span>Seus dados estão salvo conosco</span>
+            </div>
+        </>
+    )
+}
+___________________________________________________________
+OUTRA MANEIRA= 
+function Button({name, active}){
+
+    return (
+        <><div className='containerButton'>
+            <button className={active ? 'button' : 'disabledButton'}>{name}</button>
+            <span>Seus dados estão salvo conosco</span>
+            </div>
+        </>
+    )
+}
+____________________________________________________________
+function App() {
+  
+  return (
+    <>
+    <Button name='Botão 1' active />
+    <Button name= 'Botão 2' />
+    <Button name='Botão 3' active={true}/>
+    </>
+  )
+}
+
+~~~~~~~~~
+
+React Hooks:
+
+Identificar quando algum valor é alterado e recarregar em tela
+
+  const hookState = useState(true) [tem que retornar o valor inicial]
+
+É possível usar a propriedade criada no componente estando no App assim:
+ <Button active name='Alterar Valor' onClick={setContador} />
+
+
+ Momentos do Componente:
+ 1- Construído em tela
+ 2- É atualizado
+ 3- É removido
+
+ useState
+Header -> Filho de App
+Quando queremos que a function App e as function components sejam reatualizadas
+
+ Contexto/Estado global
+Serve para centralizar valores e estados e compartilhar valores 
+e estados entre componentes que não interagem diretamente(nao sao pai e filho)
+
+import React, { useEffect, useState } from "react";
+import { createContext } from "react";
+
+export const userContext = createContext();
+
+export const UserStore = ({ children }) => {
+    
+    const [login, setLogin] = useState(false)
+    const [data, setData] = useState({})
+    
+    useEffect(() =>{
+        setData({name: 'Edu', age: 19})
+    }, [])
+    
+    return (
+        <userContext.Provider value={{login, setLogin, data, setData}}>
+            {children}
+        </userContext.Provider>
+    )
+}
+___________________________________________________________
+
+
+ useEffect serve para executar só quando o código aparece em tela, 
+ pela primeira vez, ou se ocorre alguma atualização.
+
+  useEffect(() => {
+    console.log('Carregou pela primeira vez')
+  } , [contador]) // sempre que o contador for atualizado, o useEffect é executado
+  // se o Array estiver vazio, só vai executar pela primeira vez
+
+
+    useEffect(() => {
+    console.log('Carregando')
+
+    return () => { // essa return vai fazer que quando desapareça da tela é executado
+
+    }
+
+
+  }, [carregando])
+
+   UseRef
+
+     const video = useRef();
+
+  function callBack() {
+    console.log(video.current.pause())
+  } // também é póssivel chamar o useRef atravez da function callback
+
+  console.log(video)
+
+
+  useEffect(() => {
+    console.log(video.current.pause())
+  }, [])
+
+    return () => { // essa return vai fazer que quando desapareça da tela é executado
+
+    }
+
+
+  }, [carregando])
+
+
+
+ useMemo
+Método que recebe uma função, o retorno da função é memorizado
+
+    const valorMemorizado = useMemo(() => {
+    return 'Qualquer coisa'
+  }, []) // Serve para salvar o return da função, é utilizado em casos muito específicos.
+
+
+
+
+
+  useCallBack
+   const callBack = useCallback(() => {
+    console.log('Qualquer coisa')
+ }, []) // armazena a função (depois do useCallBack)
+// sempre que usar um valor dentro da função callback, também coloca-lo na dependencia(array)allBack)
+
+
+
+userContext - Redux - Mobx
+Forma de redirecionar para outra pagina
+
+BrowserRouter 
+Envolve toda a parte da aplicação que utiliza de rotas.
+
+function App() {
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/contato' element={<Contato />} />
+        <Route path='/fotos' element={<Fotos />}/>
+      </Routes>
+    </BrowserRouter>
+  )
+  
+}
+
+
+                <Link to='/'>
+                        <li>Home</li>
+                    </Link>
+
+                     <li onClick={() => setLogin(!login)}>{login ? 'Deslogar' : 'Login'}</li>
+
+
+Outra forma de redirecionar para uma pagina
+                         const navigate = useNavigate();
+                          <li onClick={() => navigate('contato')}>Login</li>
+
+Para redirecionar automaticamente 
+
+    const navigate = useNavigate();
+
+    const active = false;
+    
+    useEffect(() => {
+        if (active) {
+            navigate('contato')
+        } else {
+            navigate('fotos')
+        }
+    }, [])
+
+    id = valor de identificação para algo único
+
+
+    Route params
+
+        const params = useParams()
+    console.log(params.id)
+
+    useEffect(() => {
+        
+    }, [])
+
+
+PropTypes
+
+    Header.propTypes = {
+        nome: propTypes.string.isRequired,
+        age: propTypes.number,
+        active: propTypes.active
+    }
+
+
+index
+
+const produtos = [
+    {nome: 'Batedeira', id:20},
+    {nome: 'Ventilador', id:22},
+    {nome: 'Computador', id:30},
+]
+
+    const location = useLocation();
+    console.log(location)
+
+            {produtos.map((produto, index) => (
+                <Link key={index} to={`detalhes/${produto.id}`}> 
+                <span style={{display: 'block' }}>{produto.nome}</span>
+                </Link>
+
+Lazy - serve para importar componentes pesados e só ser carregado em determinado momento
+const Header = lazy(() => import('../../components/header/header'))
+
+Suspense - Enquanto o Lazy não é carregado, o suspense fica em tela.
+
+const Header = lazy(() => import('../../components/header/header'))
+
+        <Suspense fallback={<div>Carregando...</div>}>
+            <Header nome='Edu' age={19} active={true} />
+        </Suspense>
+
+
+Loading - Sempre que for alterado, o componente com o Loading={loading} será recarregado 
+
+function Home(){
+    const [loading, setLoading] = useState(false);
+
+
+    return (
+            <Header Loading={loading} nome='Edu' age={19} active={true} />
+    )
+}
+
+Memo - Serve para exportar de maneira diferente, faz não ser atualizado sempre que o componente pai é atualizado.
+ Só deve ser utilizado quando o componente não utiliza nenhum estado do componente pai, não precisando ser recarregado sempre que é atualizado.
+export default memo(Header)
+
+
+<div className="contact-body">
+        <div className="contact-container"></div>
+        <div className="contact-form"> 
+            
+
+            <form id="form" className="form" action="./contato.html">
+                
+                <label id="title" className="title" name="title">Em caso de dúvidas, entre em contato com a gente!</label>
+                <input className="form-input" id="form-input name" type="name" name="Nome" placeholder=" Qual o seu nome?">
+
+                <input id="form-input email" type="email" name="Email" placeholder=" Digite um email válido">
+
+                <select className="select" name="Assunto">
+                    <option>Assunto</option>
+                    <option value="Problemas técnicos">Problemas Técnicos</option>
+                    <option value="Criticas e Sugestões">Críticas e Sugestões</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <textarea className="text" name="mensagem" id="mensagem" rows="6" placeholder="  Digite sua mensagem"></textarea>
+    
+                <button className="contact-button">Enviar</button>
+
+            </form>
+                <div>
+                    <img className="imagem"/>
+                </div>
+            </div>
+            <div class="contact-card-body">
+                <a href="https://www.instagram.com" target="_blank"><img className="contact-card insta"></img>
+                </a>
+                <a href="https://www.youtube.com" target="_blank">
+                    <img className="contact-card youtube"></img>
+                </a>
+            </div>
+        </div>

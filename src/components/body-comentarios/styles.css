@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+.coment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coment-title {
+    background-color: #fff;
+    font-size: 30px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.coment-form-content {
+    width: 500px;
+    height: 390px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fff;
+    font-size: 17px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    border-radius: 10px;
+}
+
+.coment-input {
+    width: 280px;
+    height: 23px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.text {
+    width: 280px;
+    border-radius: 10px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 16px;
+}
+
+.button-container {
+    height: 50px;
+    width: 310px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    background-color: #d21617;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .8s;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    margin-top: 3px;
+    margin-bottom: 12px;
+    margin-left: 30px;
+}
+
+.button:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.comment-checkbox-label {
+    width: 79px;
+    height: 14px;
+    background-color: #d21617;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .8s;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    margin-bottom: 12px;
+}
+
+.comment-checkbox-label:hover {
+    background-color: black;
+    color: #fff;
+}
+
+.comment-checkbox {
+    width: 68px;
+    height: 16px;
+    margin-top: -5px;
+    margin-left: -27px;
+}
+
+@media (max-width:768px){
+    .coment-form-content{
+        width: 100%;
+        height: 380px;
+        border-radius: 0px;
+    }
+}
+
+
